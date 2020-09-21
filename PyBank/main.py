@@ -1,8 +1,8 @@
-#modules
+#import dependencies
 import os
 import csv
 
-#specify file path
+#declare file path
 csvpath = os.path.join("..","PyBank","budget_data3.csv")
 
 with open("budget_data3.csv","r") as csvfile:
@@ -72,8 +72,8 @@ with open("budget_data3.csv","r") as csvfile:
 #Output to text file
 output_file = os.path.join("output.csv")
 with open(file_to_output,"w") as datafile:
-    writer = csv.writer(datafile)
-    datafile.write("Financial Analysis")
+    csvwriter = csv.writer(datafile)
+    datafile.writerow("Financial Analysis")
     datafile.write("\n")
     datafile.write(f"Total Months:  {str(total_months)}")
     datafile.write("\n")
@@ -82,7 +82,7 @@ with open(file_to_output,"w") as datafile:
     datafile.write(f"Average Revenue Change + {str(avg_revenue_change)}")
     datafile.write("\n")
     datafile.write((f"Greatest Increase in Revenue:  {str(max_revenue_change_date) +str(max_revenue_change)}")
-    datafile.write("\n")
+    datafile.writerow("\n")
     datafile.write(f"Greatest Decrease in Revenue:  {str(min_revenue_change_date) +str(min_revenue_change)}")
 
 
