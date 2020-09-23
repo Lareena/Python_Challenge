@@ -13,12 +13,9 @@ with open("election_data3.csv","r") as csvfile:
 
 
 #define variables
-    categories = ("Voter ID","County","Candidate")
-    total_votes = 0
-    vote_count = []
-    vote_result = {}
-    candidate_votes = []
-    candidates = []
+vote_count=0
+candidates = []
+vote_count_candidate = {}
 
 
 
@@ -27,11 +24,7 @@ with open("election_data3.csv","r") as csvfile:
 #total number of votes cast
     for row in csv_reader:
 
-        vote_count.append(row[1])
-        total_votes = (int(sum(vote_count)))
-        print(total_votes)
-        
-    
+        vote_count = vote_count + 1
 
 
 
