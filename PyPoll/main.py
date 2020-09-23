@@ -25,8 +25,13 @@ with open("election_data3.csv","r") as csvfile:
 
 
 #total number of votes cast
-    total_votes = 0
-    total_votes = total_votes + 1
+    for row in csv_reader:
+
+        vote_count.append(row[1])
+        total_votes = (int(sum(vote_count)))
+        print(total_votes)
+        
+    
 
 
 
