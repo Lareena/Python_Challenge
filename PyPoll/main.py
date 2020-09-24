@@ -1,42 +1,52 @@
-#import dependencies
 import os
 import csv
-
-#declare file path
-csvpath = os.path.join("election_data3.csv")
-
-#open csvfile
-with open("election_data3.csv","r") as csvfile:
-    csv_reader = csv.reader(csvfile, delimiter = ",")
-    csv_reader = next(csv_reader)
-    output_file = "election_results.txt"
-
-
-#define variables
+import operator
+#Initialize Variable
 vote_count=0
+dashes="-------------------------"
 candidates = []
 vote_count_candidate = {}
 
+election_csv = os.path.join("election_data3.csv")
+
+# Open the CSV
+with open(election_csv, 'r') as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=",")
+    next(csvreader)
+
+    for row in csvreader:
+        vote_count = vote_count + 1
+        if row[2] not in candidates:
+            candidates.append(row[2])
+            vote_count_candidate[row[2]] = 1
+        else:
+            vote_count_candidate[row[2]] = vote_count_candidate[row[2]] + 1
 
 
 
-#total number of votes cast
-    for row in csv_reader:
-        ballot = [row[2] for row in csvreader]
-        numVotes = len(ballot)
+winner = max(vote_count_candidate.items(), key=operator.itemgetter(1))[0]
+
+print(f"Election Results") 
+print(f"{dashes}")
+print(f"Total Votes: {vote_count}")
+print(f"{dashes}")
+for c, v in vote_count_candidate.items():
+    print(c, "{:.3f}".format(round(((v/vote_count)*100),3)) + "%","(",(str(v)),")")
+print(f"{dashes}")   
+print(f"Winner: "+ str(winner) +'\n')
+print(f"{dashes}")
 
 
 
-
-#complete list of candidates who received votes
-        
-        candidates = list(set(ballot))
-
-#percentage of votes each candidate won
-
-
-#total number of votes each candidate won
-
-#winner of the election based on popular vote
-
-
+output_file = open("PyPoll.txt","w") 
+ 
+output_file.write("Election Results"+ '\n') 
+output_file.write(f"{dashes}"+ '\n')
+output_file.write(f"Total Votes: {vote_count}"+ '\n')
+output_file.write(f"{dashes}"+ '\n')
+for c, v in vote_count_candidate.items():   
+    output_file.write(c+" "+"{:.3f}".format(round(((v/vote_count)*100),3)) + "%"+"  ("+(str(v))+")"+ '\n')
+output_file.write(f"{dashes}"+ '\n')   
+output_file.write(f"Winner: " + str(winner) + '\n')
+output_file.write(f"{dashes}"+ '\n')
+output_file.close() 
