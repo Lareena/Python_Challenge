@@ -11,7 +11,7 @@ numletters_list = []
 lineslist =[]
 
 #open csvfiles
-filepath = os.path.join('.', 'paragraph_2.txt')
+filepath = os.path.join("paragraph_2.txt")
 with open("paragraph_2.txt", "r") as text_file:
     
 #Count of sentences
@@ -39,3 +39,15 @@ print("Approximate Word Count: " + str(numwords))
 print("Approximate Sentence Count:" + str(numlines))
 print("Average Letter Count:" + str(avg_numwords))
 print("Average Sentence Length:" + str(avg_line_len))
+
+#write to output file
+output_file = os.path.join("output.csv","new.csv")
+with open(file_to_output,"w") as datafile:
+    csvwriter = csv.writer(datafile)
+    
+    datafile.write("Paragraph Analysis")
+    datafile.write("Approximate Word Count: " + str(numwords))
+    datafile.write("Approximate Sentence Count:" + str(numlines))
+    datafile.write(("Average Letter Count:" + str(avg_numwords))
+    datafile.write(("Average Sentence Length:" + str(avg_line_len))
+    
