@@ -20,17 +20,20 @@ vote_count_candidate = {}
 
 
 
-
 #total number of votes cast
     for row in csv_reader:
+        ballot = [row[2] for row in csvreader]
+        numVotes = len(ballot)
 
-        vote_count = vote_count + 1
 
 
 
 #complete list of candidates who received votes
+        
+        candidates = list(set(ballot))
 
 #percentage of votes each candidate won
+
 
 #total number of votes each candidate won
 
