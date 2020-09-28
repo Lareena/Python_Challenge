@@ -8,7 +8,7 @@ csvpath = os.path.join("budget_data3.csv")
 #open csvfile
 with open("budget_data3.csv","r") as csvfile:
     csv_reader = csv.reader(csvfile, delimiter = ",")
-    csv_reader = next(csv_reader,none)
+    csv_reader = next(csv_reader)
     output_file = "budget_analysis.txt"
 
 #initialize variables
@@ -31,7 +31,7 @@ with open("budget_data3.csv","r") as csvfile:
 #net total amount of "Profit/Losses" over the entire period
        
         total_revenue = 0
-        total_revenue = sum(profits)
+        total_revenue = sum(revenue)
         
         
         
@@ -54,11 +54,11 @@ with open("budget_data3.csv","r") as csvfile:
 
         
         max_revenue_change= max(revenue_change)
-        max_revenue_change_date = str(date[revenue_change.index(max(revenue_change))])
+        max_revenue_change_date = str(months[revenue_change.index(max(revenue_change))])
 
 #the greatest decrease in losses (date and amount) over the entire period
         min_revenue_change= min(revenue_change)
-        min_revenue_change_date = str(date[revenue_change.index(min(revenue_change))])
+        min_revenue_change_date = str(months[revenue_change.index(min(revenue_change))])
 
 
 
@@ -77,12 +77,12 @@ output_file = os.path.join("output.csv","new.csv")
 with open(file_to_output,"w") as datafile:
     csvwriter = csv.writer(datafile)
     
-    datafile.write("Budget Analysis")
-    datafile.write(f"Total Months:  {str(total_months)}")
-    datafile.write(f"Total Revenue:  {str(total_revenue)}")
-    datafile.write(f"Average Revenue Change + {str(avg_revenue_change)}")
-    datafile.write((f"Greatest Increase in Revenue:  {str(max_revenue_change_date) +str(max_revenue_change)}")
-    datafile.write(f"Greatest Decrease in Revenue:  {str(min_revenue_change_date) +str(min_revenue_change)}")
+    datafile.writerow("Budget Analysis")
+    datafile.writerow(f"Total Months:  {str(total_months)}")
+    datafile.writerow(f"Total Revenue:  {str(total_revenue)}")
+    datafile.writerow(f"Average Revenue Change + {str(avg_revenue_change)}")
+    datafile.writerow(f"Greatest Increase in Revenue:  {str(max_revenue_change_date) +str(max_revenue_change)}")
+    datafile.writerow(f"Greatest Decrease in Revenue:  {str(min_revenue_change_date) +str(min_revenue_change)}")
 
 
 
