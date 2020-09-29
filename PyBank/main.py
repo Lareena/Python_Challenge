@@ -9,7 +9,7 @@ csvpath = os.path.join("budget_data3.csv")
 with open("budget_data3.csv","r") as csvfile:
     csv_reader = csv.reader(csvfile, delimiter = ",")
     csv_reader = next(csv_reader)
-    output_file = "budget_analysis.txt"
+    file_to_output = "Budget_analysis.txt"
 
 #initialize variables
     

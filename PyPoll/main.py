@@ -1,7 +1,9 @@
+# Import dependencies
 import os
 import csv
 import operator
-#Initialize Variable
+
+# Initialize Variable
 vote_count=0
 dashes="-------------------------"
 candidates = []
